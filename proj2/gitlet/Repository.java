@@ -55,7 +55,6 @@ public class Repository {
         if(message.isEmpty()) {
             Utils.exitWithError("Please enter a commit message.");
         }
-        //if(isMerge) System.out.println("FFFFFFFFFFFFFFFFFFFFFFFF");
         Commit commit = new Commit(message,isMerge,otherParentCommitID);
         clearIndex();
         commit.saveCommit();
@@ -301,11 +300,6 @@ public class Repository {
         addToTotalBlobIDToFilePath(totalBlobIDToFilePath,firstCommitFilePathToBlobs);
         addToTotalBlobIDToFilePath(totalBlobIDToFilePath,secondCommitFilePathToBlobs);
         addToTotalBlobIDToFilePath(totalBlobIDToFilePath,thirdCommitFilePathToBlobs);
-        //// TODO:remove
-        //for(Map.Entry<String,String> entry : totalBlobIDToFilePath.entrySet()){
-        //    String filePath = entry.getValue();
-        //    System.out.println(filePath);
-        //}
         return totalBlobIDToFilePath;
     }
     public static void merge(String branchName) throws IOException {
@@ -410,7 +404,7 @@ public class Repository {
         }
         if(isConflicted) System.out.println("Encountered a merge conflict.");
         String currentBranchName = getCurrentBranchFile().getName();
-        String commitMessage = "Merged " + branchName + " into " + currentBranchName;
+        String commitMessage = "Merged " + branchName + " into " + currentBranchName + ".";
         writeObject(INDEX,index);
         commit(commitMessage,true,otherCommit.getCommitID());
     }

@@ -17,10 +17,13 @@ public class CommitRecord implements Serializable {
         }
     }
     public void findSameMessageCommitID(String message){
+        boolean isFinded = false;
         for(Commit commit : commitList){
             if(commit.getMessage().equals(message)){
+                isFinded = true;
                 System.out.println(commit.getCommitID());
             }
         }
+        if(!isFinded) System.out.println("Found no commit with that message.");
     }
 }
