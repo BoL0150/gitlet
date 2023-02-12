@@ -69,7 +69,9 @@ public class CheckLabConfig {
 		}
 
 	}
-
+	public static void fuck(){
+		System.out.println("fuck you");
+	}
 	public static void main(String[] args) {
 		System.out.println("Testing configuration. This program only works for the " +
 			               "Spring 2021 edition of this course.");

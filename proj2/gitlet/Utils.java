@@ -44,6 +44,7 @@ class Utils {
                 } else if (val instanceof String) {
                     md.update(((String) val).getBytes(StandardCharsets.UTF_8));
                 } else {
+                    System.out.println(val.toString());
                     throw new IllegalArgumentException("improper type to sha1");
                 }
             }
@@ -112,7 +113,9 @@ class Utils {
     }
 
     /** Write the result of concatenating the bytes in CONTENTS to FILE,
-     *  creating or overwriting it as needed.  Each object in CONTENTS may be
+     *  creating or overwriting it as needed.(Note!!!if the file already exist,
+     *  overwirte it;or create the file and then write the content into it)
+     *  Each object in CONTENTS may be
      *  either a String or a byte array.  Throws IllegalArgumentException
      *  in case of problems. */
     static void writeContents(File file, Object... contents) {
@@ -236,4 +239,15 @@ class Utils {
         System.out.printf(msg, args);
         System.out.println();
     }
+    /** Print a massage and exit with error code 0
+     *  Note: In Gitlet project,we should always supply the argument 0 to the system.exit(0),
+     *  instead of -1 in lab6
+     */
+    public static void exitWithError(String message) {
+        if (message != null && !message.equals("")) {
+            System.out.println(message);
+        }
+        System.exit(0);
+    }
+
 }
